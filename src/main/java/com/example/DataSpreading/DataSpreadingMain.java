@@ -23,20 +23,20 @@ public class DataSpreadingMain {
         SparkSession spark = SparkSession.builder().appName("Workshop").master("local[*]").getOrCreate();
         Dataset<Row> df = spark.read().option("header", "true").csv("Data/test.csv");
         SQLContext sqlContext= new SQLContext(spark);
-        sqlContext.registerDataFrameAsTable(df, "policies");
+        sqlContext.registerDataFrameAsTable(df, "sales");
         
         
         // Prepare inputs ( Table, list of columns to group by, list of cols to duplicate, number of duplicates, list of cols to aggregate with the aggregation method)
-        String table="policies";
+        String table="sales";
         
-        String[] colsToGroupBy= {"POLICY_NO","Benefit_Code"};
+        String[] colsToGroupBy= {"Client_ID","Product_Code"};
 
         String[] colsToDuplicate= {"FIRST_NAME","LAST_NAME"};
         int nbrOfDuplicates=3;
 
         HashMap<String, String> colsToAgg = new HashMap<String, String>();
         colsToAgg.put("max", "Age");
-        colsToAgg.put("sum", "Salary");
+        colsToAgg.put("sum", "Price");
         
         
         //Prepare query and select 
