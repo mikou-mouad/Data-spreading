@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.DataSpreading;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,11 +13,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DemoApplication {
+public class DataSpreadingMain {
 
 	public static void main(String[] args) {
 		
-		SpringApplication.run(DemoApplication.class, args);
+		SpringApplication.run(DataSpreadingMain.class, args);
 		
 		// Context and Data
         SparkSession spark = SparkSession.builder().appName("Workshop").master("local[*]").getOrCreate();
